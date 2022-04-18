@@ -20,6 +20,7 @@ contract FixedKingOfEther{
         require(msg.sender != King, "You're the current king mahn!");
         require(balance[msg.sender] > 0);
         uint amount = balance[msg.sender];
+        balance[msg.sender] =0;
 
         (bool sent, ) = msg.sender.call{value: amount}("");
         require(sent, "tx failed");
